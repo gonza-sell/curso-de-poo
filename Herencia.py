@@ -6,25 +6,21 @@ class Persona:
     def hablar(self):
         print('Hola, estoy hablando un poco')
 
-class Artista:
-    def __init__(self,habilidad):
-        self.habilidad = habilidad
-    
-    def mostrar_habilidad(self):
-        print(f'Mi habilidad es: {self.habilidad}')
-
-class EmpleadoArtista(Persona, Artista):
-    def __init__(self,nombre, edad, nacionalidad,habilidad, salario, empresa):
+class Empleado(Persona):
+    def __init__(self, nombre, edad, nacionalidad, salario, empresa):
         super().__init__(nombre, edad, nacionalidad)
-        self.trabajo = trabajo
-        self.salario = salario    
+        self.salario = salario
+        self.empresa = empresa
+    
+    def presentarse(self):
+        return(f'Hola, mi nombre es {self.nombre}, tengo {self.edad} años y soy {self.nacionalidad}. Trabajo en {self.empresa} y gano {self.salario} pesos')
 
 class Estudiante(Persona):
     def __init__(self,nombre, edad, nacionalidad, notas, universidad):
-        super().__init__(nombre, edad, nacionalidad)
+        Persona.__init__(self, nombre, edad, nacionalidad)
         self.notas = notas
         self.universidad = universidad
 
-roberto = Empleado('Roberto', 43, 'argentino', 'apicultor', 50000)
+roberto = Empleado('Roberto', 43, 'argentino', 50000, 'Google')
 
-roberto.hablar()
+print(roberto.presentarse())
